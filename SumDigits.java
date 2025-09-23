@@ -19,6 +19,6 @@ public class SumDigits {
             num = sum;
 
         }
-        System.out.println(num);//Display final single digit
+        System.out.println("SUM: "+num);//Display final single digit
     }
 }
