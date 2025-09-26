@@ -1,3 +1,12 @@
+/*Define the class with string dta member. Define the function setString() to get the string input.
+  Define another another member function to find whether the string has minimum of two word, if so 
+  return true,  else return false. Define the member function to convert the words in even position
+  of the string to uppercase  and return the converted string back. The conversion has to takes place
+  only when the strinf has a minimum of two words.  From the main method create the object for class. 
+  Call the setString() to get the input. Call the String length validation. Call the String conversion
+  function only when Strinf length validation returns true and display the converted string received from 
+  function else display insuffiecient words in sentence.
+  */
 import java.util.Scanner;
 class Word {
     String text;
