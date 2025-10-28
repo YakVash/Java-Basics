@@ -17,6 +17,10 @@ class Vehicle {
         System.out.println("Vehicle Management System Initialized!");
     }
 
+    Vehicle() {
+        System.out.println("Default Vehicle constructor");
+    }
+
     // Constructor
     Vehicle(String vehicleId, String brand, String model, int year, double mileage, String fuelType, String status) {
         this.vehicleId = vehicleId;
@@ -54,6 +58,12 @@ class Car extends Vehicle {
     int seatingCapacity;
     String transmission;
     double trunkCapacity;
+
+    //Default constructor
+    Car() {
+        super();
+        System.out.println("Default Car constructor.");
+    }
 
     // Constructor overloading
     Car(String vehicleId, String brand, String model, int year, double mileage, String fuelType, String status,
@@ -153,6 +163,7 @@ class ElectricCar extends Car {
 // Main class
 public class VehicleInheritance {
     public static void main(String[] args) {
+        Car car = new Car();
         Car car1 = new Car("C001", "Toyota", "Corolla", 2020, 15000, "Petrol", "Available", 5, "Automatic", 400);
         ElectricCar eCar1 = new ElectricCar("EC001", "Tesla", "Model 3", 2022, 8000, "Electric", "Available", 5, "Automatic", 300, 75, 1.5, 350);
         Truck truck1 = new Truck("T001", "Volvo", "FH16", 2019, 50000, "Diesel", "Rented", 20, 8);
