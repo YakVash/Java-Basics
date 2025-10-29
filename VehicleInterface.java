@@ -1,19 +1,17 @@
 // Interface for Vehicle
 interface Vehicle {
-    void displayInfo();              // display vehicle details
+    // display vehicle details
     void updateStatus(String status);
     int calculateAge();              // calculate vehicle age
 }
 
-// Car class implementing Vehicle interface
-class Car implements Vehicle {
-    String vehicleId, brand, model, fuelType, status, transmission;
-    int year, seatingCapacity;
-    double mileage, trunkCapacity;
+class BasicInfo {
+    String vehicleId, brand, model, fuelType, status;
+    int year;
+    double mileage;
 
-    // Constructor
-    Car(String vehicleId, String brand, String model, int year, double mileage,
-        String fuelType, String status, int seatingCapacity, String transmission, double trunkCapacity) {
+     // Constructor
+    BasicInfo(String vehicleId, String brand, String model, int year, double mileage, String fuelType, String status) {
         this.vehicleId = vehicleId;
         this.brand = brand;
         this.model = model;
@@ -21,14 +19,8 @@ class Car implements Vehicle {
         this.mileage = mileage;
         this.fuelType = fuelType;
         this.status = status;
-        this.seatingCapacity = seatingCapacity;
-        this.transmission = transmission;
-        this.trunkCapacity = trunkCapacity;
     }
-
-    // Implement interface methods
     public void displayInfo() {
-        System.out.println("----- Car Details -----");
         System.out.println("ID: " + vehicleId);
         System.out.println("Brand: " + brand);
         System.out.println("Model: " + model);
@@ -36,6 +28,29 @@ class Car implements Vehicle {
         System.out.println("Mileage: " + mileage);
         System.out.println("Fuel Type: " + fuelType);
         System.out.println("Status: " + status);
+    }
+
+}
+
+// Car class implementing Vehicle interface
+class Car extends BasicInfo implements Vehicle {
+    String transmission;
+    int seatingCapacity;
+    double trunkCapacity;
+
+    // Constructor
+    Car(String vehicleId, String brand, String model, int year, double mileage,
+        String fuelType, String status, int seatingCapacity, String transmission, double trunkCapacity) {
+        super(vehicleId, brand, model, year, mileage, fuelType, status);
+        this.seatingCapacity = seatingCapacity;
+        this.transmission = transmission;
+        this.trunkCapacity = trunkCapacity;
+    }
+
+    // Implement interface methods
+    public void displayInfoCar() {        
+        System.out.println("----- Car Details -----");
+        displayInfo();
         System.out.println("Seating Capacity: " + seatingCapacity);
         System.out.println("Transmission: " + transmission);
         System.out.println("Trunk Capacity: " + trunkCapacity + " L");
@@ -56,31 +71,23 @@ class Car implements Vehicle {
 }
 
 // Truck class implementing Vehicle interface
-class Truck implements Vehicle {
-    String vehicleId, brand, model, status;
-    int year, numberOfWheels;
+class Truck extends BasicInfo implements Vehicle {
+    int numberOfWheels;
     double cargoCapacity;
 
-    Truck(String vehicleId, String brand, String model, int year, double cargoCapacity,
-          int numberOfWheels, String status) {
-        this.vehicleId = vehicleId;
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
+    Truck(String vehicleId, String brand, String model, int year, double mileage,
+        String fuelType, String status, double cargoCapacity,
+          int numberOfWheels) {
+        super(vehicleId, brand, model, year, mileage, fuelType, status);
         this.cargoCapacity = cargoCapacity;
         this.numberOfWheels = numberOfWheels;
-        this.status = status;
     }
 
-    public void displayInfo() {
+    public void displayInfoTruck() {        
         System.out.println("----- Truck Details -----");
-        System.out.println("ID: " + vehicleId);
-        System.out.println("Brand: " + brand);
-        System.out.println("Model: " + model);
-        System.out.println("Year: " + year);
+        displayInfo();
         System.out.println("Cargo Capacity: " + cargoCapacity + " tons");
         System.out.println("Number of Wheels: " + numberOfWheels);
-        System.out.println("Status: " + status);
     }
 
     public void updateStatus(String newStatus) {
@@ -100,31 +107,21 @@ class Truck implements Vehicle {
 }
 
 // Motorcycle class implementing Vehicle interface
-class Motorcycle implements Vehicle {
-    String vehicleId, brand, model, status;
-    int year, engineCC;
+class Motorcycle extends BasicInfo implements Vehicle {
+    int engineCC;
     boolean hasSidecar;
 
-    Motorcycle(String vehicleId, String brand, String model, int year, int engineCC,
-               boolean hasSidecar, String status) {
-        this.vehicleId = vehicleId;
-        this.brand = brand;
-        this.model = model;
-        this.year = year;
+    Motorcycle(String vehicleId, String brand, String model, int year, double mileage, String fuelType, String status, int engineCC, boolean hasSidecar) {
+        super(vehicleId, brand, model, year, mileage, fuelType, status);
         this.engineCC = engineCC;
         this.hasSidecar = hasSidecar;
-        this.status = status;
     }
 
-    public void displayInfo() {
+    public void displayInfoMotorcycle() {        
         System.out.println("----- Motorcycle Details -----");
-        System.out.println("ID: " + vehicleId);
-        System.out.println("Brand: " + brand);
-        System.out.println("Model: " + model);
-        System.out.println("Year: " + year);
+        displayInfo();
         System.out.println("Engine CC: " + engineCC);
         System.out.println("Has Sidecar: " + hasSidecar);
-        System.out.println("Status: " + status);
     }
 
     public void updateStatus(String newStatus) {
@@ -154,17 +151,13 @@ class ElectricCar extends Car {
         this.rangePerCharge = rangePerCharge;
     }
 
-    @Override
-    public void displayInfo() {
+    
+    public void displayInfoECar() {
         System.out.println("----- Electric Car Details -----");
-        System.out.println("ID: " + vehicleId);
-        System.out.println("Brand: " + brand);
-        System.out.println("Model: " + model);
-        System.out.println("Year: " + year);
+        
         System.out.println("Battery Capacity: " + batteryCapacity + " kWh");
         System.out.println("Charging Time: " + chargingTime + " hrs");
         System.out.println("Range per Charge: " + rangePerCharge + " km");
-        System.out.println("Status: " + status);
     }
 
     double calculateChargeCost(double pricePerKwh) {
@@ -177,31 +170,28 @@ class VehicleInterface {
     public static void main(String[] args) {
 
         // Car object
-        Car car = new Car("C101", "Toyota", "Corolla", 2020, 45000,
-                "Petrol", "Available", 5, "Automatic", 470);
-        car.displayInfo();
+        Car car = new Car("C101", "Toyota", "Corolla", 2020, 45000, "Petrol", "Available", 5, "Automatic", 470);
+        car.displayInfoCar();
         System.out.println("Car Age: " + car.calculateAge());
         System.out.println("Rental Price (5 days): ₹" + car.calculateRentalPrice(5));
         System.out.println();
 
         // Truck object
-        Truck truck = new Truck("T201", "Tata", "HaulMax", 2018, 12, 10, "Available");
-        truck.displayInfo();
+        Truck truck = new Truck("T001", "Volvo", "FH16", 2019, 50000, "Diesel", "Rented", 20, 8);
+        truck.displayInfoTruck();
         truck.checkLoadLimit(14);
         System.out.println("Truck Age: " + truck.calculateAge());
         System.out.println();
 
         // Motorcycle object
-        Motorcycle bike = new Motorcycle("M301", "Yamaha", "R15", 2022, 155, false, "Available");
-        bike.displayInfo();
+        Motorcycle bike = new Motorcycle("M001", "Honda", "CBR500R", 2021, 5000, "Petrol", "Available", 500, false);
+        bike.displayInfoMotorcycle();
         System.out.println("Fuel Efficiency: " + bike.calculateFuelEfficiency() + " km/l");
         System.out.println();
 
         // Electric Car object
-        ElectricCar ev = new ElectricCar("E401", "Tesla", "Model 3", 2023, 10000,
-                "Electric", "Available", 5, "Automatic", 425,
-                75, 8, 500);
-        ev.displayInfo();
+        ElectricCar ev = new ElectricCar("E401", "Tesla", "Model 3", 2023, 10000, "Electric", "Available", 5, "Automatic", 425, 75, 8, 500);
+        ev.displayInfoECar();
         System.out.println("Charge Cost (₹12/kWh): ₹" + ev.calculateChargeCost(12));
     }
 }
