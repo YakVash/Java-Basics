@@ -4,7 +4,7 @@ public class LongestString {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         String sentence;
-
+        System.out.println("Name: T. Sachin Richard\nReg No.: 25SP2160005");
         //Get a sentence from the user
         sentence =sc.nextLine();
 
@@ -30,5 +30,6 @@ public class LongestString {
             longest_word = current_word;
         }
         System.out.println("The longest word is: \""+longest_word+"\"");
+        System.out.println("Umadevi(25SP2180005)");
     }
 }

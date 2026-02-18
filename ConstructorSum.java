@@ -2,6 +2,7 @@ class ConstructorSum {
     
     ConstructorSum() {
         System.out.println("Sum: "+(1+2));
+        return;
     }
     ConstructorSum(int a, int b) {
         

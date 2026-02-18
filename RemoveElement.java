@@ -6,12 +6,13 @@ public class RemoveElement {
        Scanner sc = new Scanner(System.in);
        char[] arr = {'a', 's', 'm', 'c'};
        int n = arr.length;
+       System.out.println("Name: T. Sachin Richard\nReg No.: 25SP2160005");
        for (i=0; i < n; i++) {
         System.out.print("'"+arr[i]+"'");
        }
 
        //Get element to remove from user
-       System.out.println("Given letter: ");
+       System.out.print("\n Given letter to be removed: ");
        char key = sc.next().charAt(0);
 
        //Search for the position of the given element
@@ -33,6 +34,7 @@ public class RemoveElement {
             System.out.print(arr[i]+" ");
         }
        }
+       System.out.println("\nYakmi(25SP2180003)");
 
     }
 }

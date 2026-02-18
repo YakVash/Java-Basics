@@ -4,6 +4,7 @@ public class SumDigits {
     public static void main (String[] args) {
         int num, rem;
         Scanner sc = new Scanner(System.in);
+        System.out.println("Name: T. Sachin Richard\nReg No.: 25SP2160005");
         System.out.println("Input: ");
         num = sc.nextInt();
 
@@ -20,5 +21,6 @@ public class SumDigits {
 
         }
         System.out.println("SUM: "+num);//Display final single digit
+        System.out.println("Yakmi(25SP2180003)");
     }
 }

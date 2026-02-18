@@ -11,7 +11,7 @@ class Result {
         this.Regno = S;
         this.name = S1;
         System.out.println("Regno: "+ Regno+"  Name: "+name);
-    }
+    
 
     
 

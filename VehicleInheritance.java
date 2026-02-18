@@ -133,7 +133,7 @@ class Motorcycle extends Vehicle {
     }
 }
 
-// ElectricCar class
+// ElectricCar class multilevel inheritance
 class ElectricCar extends Car {
     double batteryCapacity;
     double chargingTime;
@@ -163,12 +163,12 @@ class ElectricCar extends Car {
 // Main class
 public class VehicleInheritance {
     public static void main(String[] args) {
-        Car car = new Car();
+        
         Car car1 = new Car("C001", "Toyota", "Corolla", 2020, 15000, "Petrol", "Available", 5, "Automatic", 400);
         ElectricCar eCar1 = new ElectricCar("EC001", "Tesla", "Model 3", 2022, 8000, "Electric", "Available", 5, "Automatic", 300, 75, 1.5, 350);
         Truck truck1 = new Truck("T001", "Volvo", "FH16", 2019, 50000, "Diesel", "Rented", 20, 8);
         Motorcycle bike1 = new Motorcycle("M001", "Honda", "CBR500R", 2021, 5000, "Petrol", "Available", 500, false);
-
+        System.out.println("Name: T. Sachin Richard\nReg No.: 25SP2160005");
         System.out.println("\n--- Car Info ---");
         car1.displayCarInfo();
         System.out.println("Rental Price for 5 days: $" + car1.calculateRentalPrice(5));
@@ -186,5 +186,6 @@ public class VehicleInheritance {
         System.out.println("Fuel Efficiency: " + bike1.calculateFuelEfficiency() + " km/l");
 
         System.out.println("\nTotal Vehicles: " + Vehicle.vehicleCount);
+        System.out.println("Uma(25SP2180005)");
     }
 }

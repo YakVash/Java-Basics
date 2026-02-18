@@ -41,7 +41,8 @@ class Car extends Vehicle {
     }
 
     int calculateAge() {
-        return 2025 - year;
+        int currentYear = LocalDate.now().getYear();
+        return currentYear - year;
     }
 
     double calculateRentalPrice(int days) {
@@ -74,7 +75,8 @@ class Truck extends Vehicle {
     }
 
     int calculateAge() {
-        return 2025 - year;
+        int currentYear = LocalDate.now().getYear();
+        return currentYear - year;
     }
 
     void checkLoadLimit(double weight) {
@@ -110,7 +112,8 @@ class Motorcycle extends Vehicle {
     }
 
     int calculateAge() {
-        return 2025 - year;
+        int currentYear = LocalDate.now().getYear();
+        return currentYear - year;
     }
 
     double calculateFuelEfficiency() {
